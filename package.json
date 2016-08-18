@@ -1,7 +1,7 @@
 {
-  "name": "MagictheGatheringCardSearch",
+  "name": "PeopleOfWikipedia",
   "version": "0.0.1",
-  "description": "Creating Express application using Magic the gathering API",
+  "description": "Creating components to discover people on wikipedia",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
