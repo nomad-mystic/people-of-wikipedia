@@ -11,14 +11,27 @@ require('babel-polyfill');
 var chai = require('chai');
 var http = require('chai-http');
 
-
+chai.use(http);
 
 
 describe('Application Logic', () => {
 
     describe('Server Logic', () => {
-        it('expect server to return ')
-    });
-});
+        describe('Root logic', () => {
+            it('expect server root route to return 200', (done) => {
+                chai.request('http://localhost:3000')
+                    .get('/')
+                    .end((err, res) => {
+                        chai.expect(err).to.equal(null);
+
+                        chai.expect(res).to.be.a('object');
+                        chai.expect(res).to.have.status(200);
+                        chai.expect(res).to.be.html;
+                        done();
+                    });
+            });
+        });
+    }); // server logic
+}); // end application logic
 
 
