@@ -5,7 +5,7 @@
 
 
 // Adding so I can use ES6 in testing
-require('babel-polyfill');
+// require('babel-polyfill');
 
 
 var chai = require('chai');
@@ -18,7 +18,7 @@ describe('Application Logic', () => {
 
     describe('Server Logic', () => {
         describe('Root logic', () => {
-            it('to have status of 200, have no errors, be an object, and be HTML', (done) => {
+            it('to have status of 200, have no errors, be an object, and have content-type HTML', (done) => {
                 chai.request('http://localhost:3000')
                     .get('/')
                     .end((err, res) => {
@@ -30,6 +30,20 @@ describe('Application Logic', () => {
                     });
             });
         });
+        // initialPeople endpoint
+        describe('Initial People endpoint', () => {
+           it('should have status of 200, not have errors, have header content-type HTML, and be an Object', (done) => {
+               chai.request('http://localhost:3000')
+                   .get('/initialPeople')
+                   .end((err, res) => {
+                       chai.expect(res).to.have.status(200);
+                       chai.expect(err).to.equal(null);
+                       chai.expect(res).to.be.an('object');
+                       chai.expect(res).to.have.header('content-type', 'text/html');
+                       done();
+                   });
+           });
+        }); //  end Initial People endpoint
     }); // server logic
 }); // end application logic
 

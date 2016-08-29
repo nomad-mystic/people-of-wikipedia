@@ -83,4 +83,5 @@ jspm_packages
 # added by nomad
 .idea/
 #webpack.config.js
+bower_components/
 
