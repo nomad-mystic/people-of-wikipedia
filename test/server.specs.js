@@ -31,15 +31,15 @@ describe('Application Logic', () => {
             });
         });
         // initialPeople endpoint
-        describe('Initial People endpoint', () => {
+        describe('Initial Pages endpoint', () => {
            it('should have status of 200, not have errors, have header content-type HTML, and be an Object', (done) => {
                chai.request('http://localhost:3000')
-                   .get('/initialPeople')
+                   .get('/initialPages')
                    .end((err, res) => {
                        chai.expect(res).to.have.status(200);
                        chai.expect(err).to.equal(null);
                        chai.expect(res).to.be.an('object');
-                       chai.expect(res).to.have.header('content-type', 'text/html');
+                       chai.expect(res).to.have.header('content-type', 'text/html; charset=utf-8');
                        done();
                    });
            });

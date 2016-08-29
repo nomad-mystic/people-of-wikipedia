@@ -12,6 +12,9 @@ console.log('Location: ' + window.location.href);
 // getting utilities
 import getPromise from './utilities/getPromise';
 
+// import Classes
+
+
 // Getting initial template of ten people from the API
 // this is the path to the express route
 getPromise('/').then((response) => {
