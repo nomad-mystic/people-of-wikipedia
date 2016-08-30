@@ -1,30 +1,29 @@
 /**
- * Created by Nomad_Mystic on 8/19/2016.
+ * Created by Nomad_Mystic on 8/29/2016.
  */
 
 
-let getPromise = (url) => {
+let buildTemplatePromise = (template) => {
     return new Promise((resolve, reject) => {
-
         let req = new XMLHttpRequest();
 
         req.onload = () => {
-            // this will send if it has any status code
             if (req.status == 200) {
                 resolve(req.response);
             } else {
-                reject(Error(req.statusText));
+                reject(Error(req.responseText))
             }
         };
 
         req.onerror = (err) => {
             console.log(err);
-            reject(Error(req.statusText));
+            reject(Error(req.responseText));
         };
-        req.open('GET', url, true);
+
+        req.open('GET', template, true);
         req.send();
+
     });
 };
 
-
-export default getPromise;
+export default buildTemplatePromise;
