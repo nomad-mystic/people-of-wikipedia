@@ -26,7 +26,6 @@ app.get('/', function(req, res) {
 
 // get ten people from the wikiMedia API randomly selected
 app.get('/initialPages', function(req, res) {
-
     https.get('https://en.wikipedia.org/w/api.php?' +
         'action=query' +
         '&format=json' +
@@ -37,21 +36,49 @@ app.get('/initialPages', function(req, res) {
         '&cmtype=page' +
         '&cmstarthexsortkey=423455',
         function(response) {
+            var responseString = '';
 
-        var responseString = '';
+            response.on('data', function(data) {
+                responseString += data;
+            });
 
-        response.on('data', function(data) {
-            responseString += data;
-        });
-
-        response.on('end', function() {
-            res.send(responseString);
-        });
+            response.on('end', function() {
+                res.send(responseString);
+            });
     }).on('error', function(err) {
         console.log(err);
     });
+}); // '/initialPages'
 
+app.get('/pageId', function(req, res) {
+   https.get('https://en.wikipedia.org/w/api.php?' +
+       'action=parse' +
+       '&format=json' +
+       '&requestid=' +
+       '&text=' +
+       '&pageid=55931' +
+       '&prop=' +
+            'images' +
+            '%7Cdisplaytitle' +
+            '%7Cproperties' +
+            '%7Cwikitext',
+       function(response) {
+           // console.log(response);
+
+           var individualPageString = '';
+           response.on('data', function(data) {
+                individualPageString += data;
+           });
+           response.on('end', function() {
+               res.send(individualPageString);
+           });
+           response.on('error', function(err) {
+              console.log(err);
+           });
+   }); // end HTTPS
 });
+
+
 
 var server = app.listen(3000, function() {
     var port = server.address().port;
