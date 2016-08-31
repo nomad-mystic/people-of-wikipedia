@@ -46,7 +46,7 @@
 
 	'use strict';
 	
-	var _categoryPage = __webpack_require__(14);
+	var _categoryPage = __webpack_require__(1);
 	
 	var _categoryPage2 = _interopRequireDefault(_categoryPage);
 	
@@ -57,7 +57,7 @@
 	 */
 	
 	// requires main css files and webpack bundles up the css for client
-	__webpack_require__(6);
+	__webpack_require__(7);
 	
 	// getting utilities
 	// import getPromise from './utilities/getPromise';
@@ -96,6 +96,57 @@
 
 /***/ },
 /* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _getPromise = __webpack_require__(2);
+	
+	var _getPromise2 = _interopRequireDefault(_getPromise);
+	
+	var _buildTemplate = __webpack_require__(3);
+	
+	var _buildTemplate2 = _interopRequireDefault(_buildTemplate);
+	
+	var _CategoryPage = __webpack_require__(6);
+	
+	var _CategoryPage2 = _interopRequireDefault(_CategoryPage);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// calls initialPages endpoint and returns object for mustache templating
+	var categoryPage = function categoryPage(category) {
+	    (0, _getPromise2.default)('/category/' + category + '').then(function (response) {
+	        // console.log(response);
+	        // call constructor
+	        var CategoryPageClass = new _CategoryPage2.default(response);
+	        // get the member variable(Object)
+	        var page = CategoryPageClass.getCategoryPage();
+	        var parsedCategoryPage = JSON.parse(page);
+	
+	        // console.log(parsedInitialPages.query.categorymembers);
+	        var categoryMembersArray = parsedCategoryPage.query.categorymembers;
+	        // console.log(categoryMembersArray);
+	
+	        // this function takes the name of the template wanted to be used
+	        // and the data for that template
+	        (0, _buildTemplate2.default)('initialPagesTemplate', categoryMembersArray);
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}; /**
+	    * Created by Nomad_Mystic on 8/31/2016.
+	    */
+	
+	// grabbing all import need from displaying categories
+	exports.default = categoryPage;
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -133,7 +184,7 @@
 	exports.default = getPromise;
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -142,14 +193,14 @@
 	    value: true
 	});
 	
-	var _templatePromise = __webpack_require__(3);
+	var _templatePromise = __webpack_require__(4);
 	
 	var _templatePromise2 = _interopRequireDefault(_templatePromise);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// Load Libraries
-	var Mustache = __webpack_require__(4); /**
+	var Mustache = __webpack_require__(5); /**
 	                                     * Created by Nomad_Mystic on 8/29/2016.
 	                                     */
 	
@@ -172,7 +223,7 @@
 	exports.default = buildTemplate;
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -209,7 +260,7 @@
 	exports.default = buildTemplatePromise;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -823,20 +874,7 @@
 	});
 
 /***/ },
-/* 5 */,
 /* 6 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -873,55 +911,10 @@
 	exports.default = CategoryPage;
 
 /***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/* 7 */
+/***/ function(module, exports) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _getPromise = __webpack_require__(1);
-	
-	var _getPromise2 = _interopRequireDefault(_getPromise);
-	
-	var _buildTemplate = __webpack_require__(2);
-	
-	var _buildTemplate2 = _interopRequireDefault(_buildTemplate);
-	
-	var _CategoryPage = __webpack_require__(13);
-	
-	var _CategoryPage2 = _interopRequireDefault(_CategoryPage);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// calls initialPages endpoint and returns object for mustache templating
-	var categoryPage = function categoryPage(category) {
-	    (0, _getPromise2.default)('/category/' + category + '').then(function (response) {
-	        // console.log(response);
-	        // call constructor
-	        var CategoryPageClass = new _CategoryPage2.default(response);
-	        // get the member variable(Object)
-	        var page = CategoryPageClass.getCategoryPage();
-	        var parsedCategoryPage = JSON.parse(page);
-	
-	        // console.log(parsedInitialPages.query.categorymembers);
-	        var categoryMembersArray = parsedCategoryPage.query.categorymembers;
-	        // console.log(categoryMembersArray);
-	
-	        // this function takes the name of the template wanted to be used
-	        // and the data for that template
-	        (0, _buildTemplate2.default)('initialPagesTemplate', categoryMembersArray);
-	    }, function (err) {
-	        console.log(err);
-	    });
-	}; /**
-	    * Created by Nomad_Mystic on 8/31/2016.
-	    */
-	
-	// grabbing all import need from displaying categories
-	exports.default = categoryPage;
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
