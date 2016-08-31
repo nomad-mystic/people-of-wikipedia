@@ -7,6 +7,22 @@ header {
     font-size: 1em;
   }
 
+  .btn-group.btn-group-raised {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    .btn.btn-primary {
+      display: block;
+      width: 100%;
+      margin: 1% auto;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 header h1 {
   text-align: center;

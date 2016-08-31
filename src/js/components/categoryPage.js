@@ -24,7 +24,7 @@ let categoryPage = (category) => {
 
             // this function takes the name of the template wanted to be used
             // and the data for that template
-            buildTemplate('initialPagesTemplate', categoryMembersArray);
+            buildTemplate('categoryPageTemplate', categoryMembersArray);
         },
         (err) => {
             console.log(err);

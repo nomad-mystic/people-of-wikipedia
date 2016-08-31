@@ -4,7 +4,8 @@
 
 
 // requires main css files and webpack bundles up the css for client
-require('../scss/main.scss');
+// require('../scss/main.scss');
+require('../css/main.css');
 
 // getting utilities
 // import getPromise from './utilities/getPromise';
