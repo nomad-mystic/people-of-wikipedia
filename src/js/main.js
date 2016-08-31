@@ -6,8 +6,6 @@
 // requires main css files and webpack bundles up the css for client
 require('../scss/main.scss');
 
-
-
 // getting utilities
 import getPromise from './utilities/getPromise';
 import buildTemplate from './utilities/buildTemplate';
@@ -31,16 +29,9 @@ let initializePages = () => {
         let pages = InitialPagesClass.getInitialPages();
         let parsedInitialPages = JSON.parse(pages);
 
-        // turn pages.query.categorymembers array into an object
         // console.log(parsedInitialPages.query.categorymembers);
         let categoryMembersArray = parsedInitialPages.query.categorymembers;
-        console.log(categoryMembersArray);
-        // let categoryMembersObject = {};
-        // for (var i=0; i < categoryMembersArray.length; i++) {
-        //     // this is the value         creates object for each object in the array
-        //     categoryMembersObject[[i]] = categoryMembersArray[i];
-        // }
-        // console.log(categoryMembersObject);
+        // console.log(categoryMembersArray);
 
         // this function takes the name of the template wanted to be used
         // and the data for that template

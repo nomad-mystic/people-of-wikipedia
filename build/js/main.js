@@ -89,16 +89,9 @@
 	        var pages = InitialPagesClass.getInitialPages();
 	        var parsedInitialPages = JSON.parse(pages);
 	
-	        // turn pages.query.categorymembers array into an object
 	        // console.log(parsedInitialPages.query.categorymembers);
 	        var categoryMembersArray = parsedInitialPages.query.categorymembers;
-	        console.log(categoryMembersArray);
-	        // let categoryMembersObject = {};
-	        // for (var i=0; i < categoryMembersArray.length; i++) {
-	        //     // this is the value         creates object for each object in the array
-	        //     categoryMembersObject[[i]] = categoryMembersArray[i];
-	        // }
-	        // console.log(categoryMembersObject);
+	        // console.log(categoryMembersArray);
 	
 	        // this function takes the name of the template wanted to be used
 	        // and the data for that template
