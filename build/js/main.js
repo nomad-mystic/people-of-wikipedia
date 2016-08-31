@@ -946,7 +946,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, "header {\r\n    margin: 0 2%;\n}\r\nheader p {\r\n    margin: 1%;\n}\r\nheader h1 {\r\n    font-size: 1em;\n}\r\nheader .btn-group.btn-group-raised {\r\n    box-shadow: none;\n}\r\nheader .btn-group.btn-group-raised .btn.btn-primary {\r\n    display: block;\r\n    width: 100%;\r\n    margin: 1% auto;\n}\r\nheader .btn-group.btn-group-raised .btn.btn-primary:first-child {\r\n    margin-top: 0;\n}\r\nheader .btn-group.btn-group-raised .btn.btn-primary:last-child {\r\n    margin-bottom: 0;\n}\r\nheader h1 {\r\n    text-align: center;\n}\r\n.component {\r\n    background: #000;\r\n    margin: 0 2%;\n}\r\n@media screen and (min-width: 768px) {\r\n    header .btn-group.btn-group-raised .btn.btn-primary {\r\n        display: block;\r\n        width: 40%;\r\n        margin: 1%;\n    }\r\n    header .btn-group.btn-group-raised .btn.btn-primary:first-child {\r\n        margin-top: 1%;\n    }\r\n    header .btn-group.btn-group-raised .btn.btn-primary:last-child {\r\n        margin-bottom: 0;\n    }\n}", ""]);
 	
 	// exports
 
