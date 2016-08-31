@@ -36,12 +36,12 @@ describe('Application Logic', () => {
         describe('Initial Pages endpoint', () => {
            it('should have status of 200, not have errors, have header content-type HTML, and be an Object', (done) => {
                chai.request('http://localhost:3000')
-                   .get('/initialPages')
+                   .get('/')
                    .end((err, res) => {
                        expect(res).to.have.status(200);
                        expect(err).to.equal(null);
                        expect(res).to.be.an('object');
-                       expect(res).to.have.header('content-type', 'text/html; charset=utf-8');
+                       expect(res).to.have.header('content-type', 'text/html; charset=UTF-8');
                        done();
                    });
            });

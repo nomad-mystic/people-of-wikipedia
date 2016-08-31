@@ -46,17 +46,9 @@
 
 	'use strict';
 	
-	var _getPromise = __webpack_require__(1);
+	var _categoryPage = __webpack_require__(14);
 	
-	var _getPromise2 = _interopRequireDefault(_getPromise);
-	
-	var _buildTemplate = __webpack_require__(2);
-	
-	var _buildTemplate2 = _interopRequireDefault(_buildTemplate);
-	
-	var _InitialPages = __webpack_require__(5);
-	
-	var _InitialPages2 = _interopRequireDefault(_InitialPages);
+	var _categoryPage2 = _interopRequireDefault(_categoryPage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -68,10 +60,14 @@
 	__webpack_require__(6);
 	
 	// getting utilities
-	
+	// import getPromise from './utilities/getPromise';
+	// import buildTemplate from './utilities/buildTemplate';
 	
 	// import Classes
+	// import InitialPages from './classes/CategoryPage';
 	
+	// Grabs data from promise, sends template name and array of objects
+	// Builds out the DOM
 	
 	// Getting initial template of ten people from the API
 	// this is the path to the express route
@@ -81,27 +77,17 @@
 	//     console.log(err);
 	// });
 	
-	// calls initialPages endpoint and returns object for mustache templating
-	var initializePages = function initializePages() {
-	    (0, _getPromise2.default)('/initialPages').then(function (response) {
-	        // console.log(response);
-	        var InitialPagesClass = new _InitialPages2.default(response);
-	        var pages = InitialPagesClass.getInitialPages();
-	        var parsedInitialPages = JSON.parse(pages);
 	
-	        // console.log(parsedInitialPages.query.categorymembers);
-	        var categoryMembersArray = parsedInitialPages.query.categorymembers;
-	        // console.log(categoryMembersArray);
-	
-	        // this function takes the name of the template wanted to be used
-	        // and the data for that template
-	        (0, _buildTemplate2.default)('initialPagesTemplate', categoryMembersArray);
-	    }, function (err) {
-	        console.log(err);
-	    });
+	var createPage = function createPage() {
+	    var href = window.location.href;
+	    console.log(href);
+	    if (href === 'http://localhost:3000/') {
+	        // the the root page
+	        (0, _categoryPage2.default)('history');
+	    }
 	};
-	// the the root page
-	initializePages();
+	
+	createPage();
 	
 	// if I need jQuery
 	$(function () {
@@ -837,7 +823,20 @@
 	});
 
 /***/ },
-/* 5 */
+/* 5 */,
+/* 6 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -853,31 +852,76 @@
 	/**
 	 * Created by Nomad_Mystic on 8/28/2016.
 	 */
-	var InitialPages = function () {
-	    function InitialPages(pages) {
-	        _classCallCheck(this, InitialPages);
+	var CategoryPage = function () {
+	    function CategoryPage(page) {
+	        _classCallCheck(this, CategoryPage);
 	
-	        this.initialPagesObject = pages;
+	        this.categoryPageObject = page;
 	    }
 	
-	    _createClass(InitialPages, [{
-	        key: "getInitialPages",
-	        value: function getInitialPages() {
+	    _createClass(CategoryPage, [{
+	        key: "getCategoryPage",
+	        value: function getCategoryPage() {
 	            // console.log(this.initialPagesObject);
-	            return this.initialPagesObject;
+	            return this.categoryPageObject;
 	        }
 	    }]);
 	
-	    return InitialPages;
+	    return CategoryPage;
 	}();
 	
-	exports.default = InitialPages;
+	exports.default = CategoryPage;
 
 /***/ },
-/* 6 */
-/***/ function(module, exports) {
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _getPromise = __webpack_require__(1);
+	
+	var _getPromise2 = _interopRequireDefault(_getPromise);
+	
+	var _buildTemplate = __webpack_require__(2);
+	
+	var _buildTemplate2 = _interopRequireDefault(_buildTemplate);
+	
+	var _CategoryPage = __webpack_require__(13);
+	
+	var _CategoryPage2 = _interopRequireDefault(_CategoryPage);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// calls initialPages endpoint and returns object for mustache templating
+	var categoryPage = function categoryPage(category) {
+	    (0, _getPromise2.default)('/category/' + category + '').then(function (response) {
+	        // console.log(response);
+	        // call constructor
+	        var CategoryPageClass = new _CategoryPage2.default(response);
+	        // get the member variable(Object)
+	        var page = CategoryPageClass.getCategoryPage();
+	        var parsedCategoryPage = JSON.parse(page);
+	
+	        // console.log(parsedInitialPages.query.categorymembers);
+	        var categoryMembersArray = parsedCategoryPage.query.categorymembers;
+	        // console.log(categoryMembersArray);
+	
+	        // this function takes the name of the template wanted to be used
+	        // and the data for that template
+	        (0, _buildTemplate2.default)('initialPagesTemplate', categoryMembersArray);
+	    }, function (err) {
+	        console.log(err);
+	    });
+	}; /**
+	    * Created by Nomad_Mystic on 8/31/2016.
+	    */
+	
+	// grabbing all import need from displaying categories
+	exports.default = categoryPage;
 
 /***/ }
 /******/ ]);

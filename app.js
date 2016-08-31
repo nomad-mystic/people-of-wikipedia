@@ -25,13 +25,14 @@ app.get('/', function(req, res) {
 });
 
 // get ten people from the wikiMedia API randomly selected
-app.get('/initialPages', function(req, res) {
+app.get('/category/:categoryName', function(req, res) {
+    console.log(req.params);
     https.get('https://en.wikipedia.org/w/api.php?' +
         'action=query' +
         '&format=json' +
         '&list=categorymembers' +
         '&cmlimit=10' +
-        '&cmtitle=Category:History' +
+        '&cmtitle=Category:' + req.params.categoryName + '' +
         '&cmprop=ids|title|type' +
         '&cmtype=page' +
         '&cmstarthexsortkey=423455',

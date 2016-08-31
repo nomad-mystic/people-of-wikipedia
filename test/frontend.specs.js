@@ -13,7 +13,7 @@ var should = chai.should();
 // var assert = chai.assert();
 
 // classes
-import InitialPages from '../src/js/classes/InitialPages';
+import CategoryPage from '../src/js/classes/CategoryPage';
 
 // utilities
 import getPromise from '../src/js/utilities/getPromise';
@@ -27,29 +27,29 @@ describe('Front-end Logic -', () => {
         describe('initialPages -', () => {
 
             it('should have class InitialPages which is an object and !null', (done) => {
-                expect(new InitialPages([])).to.be.an('object');
-                expect(new InitialPages([])).to.not.equal(null);
+                expect(new CategoryPage([])).to.be.an('object');
+                expect(new CategoryPage([])).to.not.equal(null);
                 done();
             });
-            it('InitialPages getInitialPages method should return an object and not be null', (done) => {
-                expect(new InitialPages({"key": "value"}).getInitialPages()).to.not.equal(null);
-                expect(new InitialPages({"key": "value"}).getInitialPages()).to.be.an('object');
+            it('InitialPages getCategoryPage method should return an object and not be null', (done) => {
+                expect(new CategoryPage({"key": "value"}).getCategoryPage()).to.not.equal(null);
+                expect(new CategoryPage({"key": "value"}).getCategoryPage()).to.be.an('object');
                 done();
             });
 
             it('Promise should not be rejected', (done) => {
-                return expect(Promise.resolve('/initialpages')).to.eventually.be.fulfilled.notify(done);
+                return expect(Promise.resolve('/category/history')).to.eventually.be.fulfilled.notify(done);
             });
             it('Promise should not be null', (done) => {
-                return expect(Promise.resolve('/initialpages')).to.eventually.not.equal(null).notify(done);
+                return expect(Promise.resolve('/category/history')).to.eventually.not.equal(null).notify(done);
                 // have.property('query').notify(done);
                 // return expect(Promise.resolve({ foo: "bar" })).to.eventually.have.property("foo").notify(done);
             });
             it('Promise should return a 0 key', (done) => {
-                return expect(Promise.resolve('/initialpages')).to.eventually.include.keys("0").notify(done);
+                return expect(Promise.resolve('/category/history')).to.eventually.include.keys("0").notify(done);
             });
             it('Promise should return a 10 key', (done) => {
-                return expect(Promise.resolve('/initialpages')).to.eventually.include.keys("10").notify(done);
+                return expect(Promise.resolve('/category/history')).to.eventually.include.keys("10").notify(done);
             });
             it('', (done) => {
 
