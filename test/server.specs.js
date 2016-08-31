@@ -10,6 +10,8 @@
 
 var chai = require('chai');
 var http = require('chai-http');
+var expect = chai.expect;
+var should = chai.should();
 
 chai.use(http);
 
@@ -22,10 +24,10 @@ describe('Application Logic', () => {
                 chai.request('http://localhost:3000')
                     .get('/')
                     .end((err, res) => {
-                        chai.expect(err).to.equal(null);
-                        chai.expect(res).to.be.a('object');
-                        chai.expect(res).to.have.status(200);
-                        chai.expect(res).to.be.html;
+                        expect(err).to.equal(null);
+                        expect(res).to.be.a('object');
+                        expect(res).to.have.status(200);
+                        expect(res).to.be.html;
                         done();
                     });
             });
@@ -36,10 +38,10 @@ describe('Application Logic', () => {
                chai.request('http://localhost:3000')
                    .get('/initialPages')
                    .end((err, res) => {
-                       chai.expect(res).to.have.status(200);
-                       chai.expect(err).to.equal(null);
-                       chai.expect(res).to.be.an('object');
-                       chai.expect(res).to.have.header('content-type', 'text/html; charset=utf-8');
+                       expect(res).to.have.status(200);
+                       expect(err).to.equal(null);
+                       expect(res).to.be.an('object');
+                       expect(res).to.have.header('content-type', 'text/html; charset=utf-8');
                        done();
                    });
            });

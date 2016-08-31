@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
     entry: {
@@ -32,6 +32,7 @@ module.exports = {
     // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
     plugins: [
         // output path for css styles relative to javascript output
-        new ExtractTextPlugin('../css/[name].css')
+        new ExtractTextPlugin('../css/[name].css'),
+        new LiveReloadPlugin()
     ]
 };
